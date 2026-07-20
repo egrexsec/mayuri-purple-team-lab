@@ -1,0 +1,34 @@
+# Secrets and local runtime configuration
+.env
+.env.*
+!.env.example
+*secret*
+*credential*
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Raw evidence and large artifacts
+*.evtx
+*.pcap
+*.pcapng
+*.raw
+*.mem
+*.dmp
+*.dd
+*.E01
+*.vmdk
+*.qcow2
+*.iso
+*.zip
+*.7z
+*.tar
+*.gz
+
+# Tooling state
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.DS_Store

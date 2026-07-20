@@ -1,0 +1,43 @@
+lab:
+  name: mayuri-purple-team-lab
+  environment: isolated-authorized-training
+
+segments:
+  - alias: MGMT-NET
+    purpose: hypervisor-and-firewall-administration
+  - alias: ENTERPRISE-NET
+    purpose: identity-endpoint-soc-cti
+  - alias: ATTACK-NET
+    purpose: authorized-adversary-simulation
+  - alias: DFIR-NET
+    purpose: evidence-collection-and-analysis
+
+assets:
+  - alias: LAB-HV
+    role: hypervisor
+    segment: MGMT-NET
+  - alias: LAB-FW
+    role: firewall-router
+    segment: all
+  - alias: LAB-DC
+    role: identity-dns-policy
+    segment: ENTERPRISE-NET
+  - alias: LAB-WIN
+    role: windows-validation-target
+    segment: ENTERPRISE-NET
+  - alias: LAB-SOC
+    role: siem-and-network-monitoring
+    segment: ENTERPRISE-NET
+  - alias: LAB-KALI
+    role: authorized-attacker
+    segment: ATTACK-NET
+  - alias: LAB-DFIR
+    role: forensic-collection-analysis
+    segment: DFIR-NET
+  - alias: LAB-CTI
+    role: threat-intelligence-enrichment
+    segment: ENTERPRISE-NET
+
+secrets:
+  policy: runtime-only-never-commit
+  source: external-secret-store
