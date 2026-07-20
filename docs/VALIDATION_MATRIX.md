@@ -14,6 +14,11 @@
 | Velociraptor collection | Benign remote endpoint collection | Validated at deployment | `evidence/velociraptor-collection.md` |
 | OpenCTI health | Container/application health and HTTP response | Verified | CTI evidence summary |
 | Shodan enrichment | Benign observable work completed with zero errors | Live validated | `evidence/opencti-shodan-enrichment.md` |
+| Wazuh alert enrichment | Benign alert through relay, broker, orchestration, and non-recursive summary rule | Live validated | `evidence/alert-cti-enrichment.md` |
+| Splunk alert enrichment | Controlled script-block event through scheduled search, webhook relay, CTI broker, and case workflow | Live validated | `evidence/alert-cti-enrichment.md` |
+| Enrichment fail-open behavior | Unit test with unavailable enrichment service while original alert remains forwardable | Verified | `tests/test_cti_alert_integration.py` |
+| CTI cache behavior | Repeated benign observable returns a cache hit without repeat provider work | Live validated | `evidence/alert-cti-enrichment.md` |
+| Workflow credential handling | Exported workflow references encrypted n8n credential and contains no static receiver secret | Verified | `evidence/alert-cti-enrichment.md` |
 | Reboot persistence | Guest reboot plus service/object checks | Verified | CTI evidence summary |
 | Snapshot recovery point | Clean milestone snapshots enumerated | Verified | Recovery doc |
 | Application-consistent restore | Full restore drill | Planned | Known limitations |

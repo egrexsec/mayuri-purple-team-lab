@@ -1,0 +1,12 @@
+<!-- Merge these blocks into the Wazuh manager configuration. -->
+<integration>
+  <name>custom-cti-n8n</name>
+  <hook_url>http://REPLACE_WITH_RELAY_ADDRESS:8766/wazuh/REPLACE_WITH_RANDOM_ROUTE_TOKEN</hook_url>
+  <level>10</level>
+  <alert_format>json</alert_format>
+</integration>
+
+<localfile>
+  <log_format>json</log_format>
+  <location>/var/ossec/logs/cti-enrichment.log</location>
+</localfile>

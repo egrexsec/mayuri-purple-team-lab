@@ -1,0 +1,15 @@
+<group name="local,cti_enrichment,">
+  <rule id="REPLACE_WITH_UNUSED_LOCAL_RULE_ID" level="5">
+    <decoded_as>json</decoded_as>
+    <field name="integration">^cti_shodan$</field>
+    <description>CTI/Shodan context generated for Wazuh rule $(original_rule_id)</description>
+    <group>cti_enrichment,</group>
+  </rule>
+
+  <rule id="REPLACE_WITH_SECOND_UNUSED_LOCAL_RULE_ID" level="8">
+    <if_sid>REPLACE_WITH_UNUSED_LOCAL_RULE_ID</if_sid>
+    <field name="cti_enrichment.observables.0.attention">^elevated$</field>
+    <description>Elevated CTI/Shodan review context for Wazuh rule $(original_rule_id)</description>
+    <group>cti_enrichment,</group>
+  </rule>
+</group>

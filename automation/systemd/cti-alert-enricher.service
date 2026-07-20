@@ -1,0 +1,38 @@
+[Unit]
+Description=Cached OpenCTI and Shodan alert enrichment broker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=cti-enricher
+Group=cti-enricher
+EnvironmentFile=/etc/cti-alert-enricher.env
+LoadCredential=opencti_token:/etc/cti-alert-enricher/credentials/opencti_token
+LoadCredential=shodan_api_key:/etc/cti-alert-enricher/credentials/shodan_api_key
+LoadCredential=enricher_bearer_token:/etc/cti-alert-enricher/credentials/enricher_bearer_token
+ExecStart=/usr/bin/python3 /opt/cti-alert-enricher/enricher.py
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_INET AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+CapabilityBoundingSet=
+ReadWritePaths=/var/lib/cti-alert-enricher
+
+[Install]
+WantedBy=multi-user.target

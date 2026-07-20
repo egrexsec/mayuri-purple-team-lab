@@ -1,6 +1,6 @@
 # Mayuri Purple-Team Lab
 
-[![Documentation validation](https://github.com/egrexsec/mayuri-purple-team-lab/actions/workflows/docs-validation.yml/badge.svg)](https://github.com/egrexsec/mayuri-purple-team-lab/actions/workflows/docs-validation.yml)
+[![Repository validation](https://github.com/egrexsec/mayuri-purple-team-lab/actions/workflows/docs-validation.yml/badge.svg)](https://github.com/egrexsec/mayuri-purple-team-lab/actions/workflows/docs-validation.yml)
 
 A **sanitized, evidence-backed reference architecture** for a segmented Proxmox purple-team lab supporting Windows identity, adversary simulation, SOC monitoring, DFIR collection, detection validation, and threat-intelligence enrichment.
 
@@ -32,6 +32,7 @@ This repository documents the lab without publishing exact addresses, MACs, inte
 | DFIR workstation | **Partially verified** | Core analysis workspace and tools staged; revalidate all services before each exercise |
 | Automated alert intake | **Live validated** | Benign PowerShell replay produced a deduplicated investigation case through Splunk and orchestration |
 | CTI enrichment | **Live validated** | OpenCTI and the official Shodan connector completed a benign IPv4 enrichment with zero errors |
+| SIEM alert enrichment | **Live validated** | Wazuh and Splunk alerts received bounded, cached OpenCTI/Shodan context without making CTI authoritative |
 | Recovery checkpoints | **Verified** | Milestone snapshots exist across infrastructure, identity, endpoint, SOC, attacker, DFIR, and CTI roles |
 
 ## Architecture
@@ -54,6 +55,8 @@ flowchart LR
 
     WIN -->|Windows + Sysmon telemetry| SOC
     DC -->|Identity + security telemetry| SOC
+    SOC -->|Alert| CTI
+    CTI -->|Bounded context| SOC
     SOC -->|Alert and case workflow| CASES[Sanitized investigation artifacts]
     DFIR -->|Benign remote collection| WIN
     CTI -->|Analyst-triggered enrichment| EXT[External intelligence provider]
@@ -78,6 +81,8 @@ flowchart LR
 | `docs/` | Architecture, operating model, validation, recovery, and limitations |
 | `evidence/` | Text-only sanitized validation summaries; never raw evidence |
 | `config/` | Abstract example inventory with no live values |
+| `automation/` | Credential-free reference broker, relay, Wazuh integration, systemd unit, and examples |
+| `tests/` | Unit coverage for filtering, caching, fail-open behavior, summaries, and credential precedence |
 | `scripts/` | Public-safety and Markdown-link checks |
 | `.github/workflows/` | CI enforcement for documentation safety |
 
@@ -95,6 +100,7 @@ flowchart LR
 
 - [PowerShell detection-to-case validation](evidence/powershell-detection-to-case.md)
 - [OpenCTI and Shodan enrichment validation](evidence/opencti-shodan-enrichment.md)
+- [Wazuh and Splunk alert-enrichment validation](evidence/alert-cti-enrichment.md)
 - [Velociraptor collection validation](evidence/velociraptor-collection.md)
 
 ## What this demonstrates

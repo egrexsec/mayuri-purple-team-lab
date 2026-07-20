@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP_PARTS = {".git", "__pycache__"}
-TEXT_SUFFIXES = {".md", ".yml", ".yaml", ".json", ".py", ".txt"}
+TEXT_SUFFIXES = {".md", ".yml", ".yaml", ".json", ".py", ".txt", ".example", ".service", ".xml"}
 
 PATTERNS = {
     "private IPv4 address": re.compile(r"\b(?:10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2})\b"),
@@ -19,7 +19,7 @@ PATTERNS = {
     "internal domain": re.compile(r"\bmayuri\.lab\b", re.I),
     "operator domain": re.compile(r"\bmell0wx\.tech\b", re.I),
     "GitHub token": re.compile(r"\bgh[opusr]_[A-Za-z0-9_]{20,}\b"),
-    "likely API key assignment": re.compile(r"(?im)^\s*(?:api[_-]?key|token|password|secret|webhook)[A-Za-z0-9_.-]*\s*[:=]\s*(?!\[?REDACTED\]?|runtime-only|external-secret-store)[^\s#]{8,}\s*$"),
+    "likely API key assignment": re.compile(r"(?im)^\s*(?:api[_-]?key|token|password|secret|webhook)[A-Za-z0-9_.-]*\s*[:=]\s*(?!\[?REDACTED\]?|runtime-only|external-secret-store|REPLACE_WITH_)[^\s#]{8,}\s*$"),
 }
 
 
