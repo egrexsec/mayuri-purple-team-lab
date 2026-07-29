@@ -6,7 +6,9 @@ Prove that a controlled PowerShell behavior on the designated Windows target pro
 
 ## Result
 
-**PASS — live validated**
+**PASS — live validated on 2026-07-18**
+
+This is the Mayuri execution/evidence leg of the [Validated PowerShell Detection Lifecycle v1](https://github.com/egrexsec/cybersecurity-playbook/tree/main/detections/packs/validated-powershell-lifecycle-v1). The playbook is authoritative for the canonical Sigma source, fixture set, generated-query hashes, and human-readable validation record. DetLab-DAC is the presentation and conversion surface.
 
 - A benign PowerShell replay generated a fresh Operational event.
 - The scheduled Splunk search returned one matching result.
@@ -27,4 +29,4 @@ Prove that a controlled PowerShell behavior on the designated Windows target pro
 
 ## Sanitization
 
-Asset names, addresses, domains, timestamps, credentials, webhook locations, case IDs, and raw XML are omitted.
+Asset names, addresses, domains, exact timestamps, credentials, receiver locations, case IDs, and raw XML are omitted. The validation date is retained for portfolio traceability.
